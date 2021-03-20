@@ -6,9 +6,10 @@ import { AppComponent } from './app.component';
 import { QuestionarioComponent } from './questionario/questionario.component';
 import { QuestaoComponent } from './questionario/questao/questao.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NovotesteComponent } from './novoteste/novoteste.component';
 
 @NgModule({
-  declarations: [AppComponent, QuestionarioComponent, QuestaoComponent],
+  declarations: [AppComponent, QuestionarioComponent, QuestaoComponent, NovotesteComponent],
   imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],

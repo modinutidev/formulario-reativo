@@ -1,0 +1,24 @@
+<h1>Novo Modelo</h1>
+
+{{ meta | json }}
+
+<form [formGroup]="myForm">
+  <div formArrayName="respostas">
+    <div
+      *ngFor="let item of getRespostas.controls; let i = index"
+      [formGroupName]="i"
+    >
+      {{ item.value["tipo"] }}
+      <ng-container *ngIf="item.value['tipo'] === 'numero'">
+        {{ i }}
+        <input type="text" formControlName="resposta" />
+      </ng-container>
+      <ng-container *ngIf="item.value['tipo'] === 'insumo'">
+        {{ i }}
+        <input type="text" formControlName="insumo" />
+        <input type="text" formControlName="quantidade" />
+        <button (click)="addInsumo(item, i)">Add</button>
+      </ng-container>
+    </div>
+  </div>
+</form>
