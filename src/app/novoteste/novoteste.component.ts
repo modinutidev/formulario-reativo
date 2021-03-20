@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-novoteste',
@@ -39,7 +39,8 @@ export class NovotesteComponent implements OnInit {
       id: 2,
       label: 'Lorem 2',
       tipo: 'numero',
-      resposta: 'sim',
+      resposta: '',
+      validacao: 'x>=50 && x<=200',
     },
     // {
     //   id: 3,
@@ -48,6 +49,10 @@ export class NovotesteComponent implements OnInit {
     //   resposta: null,
     // },
   ];
+
+  onSubmit() {
+    console.log(this.myForm.value);
+  }
 
   ngOnInit(): void {
     this.myForm = this.fb.group({
@@ -62,8 +67,8 @@ export class NovotesteComponent implements OnInit {
       let tipo: any;
       if (p.tipo === 'insumo') {
         tipo = {
-          id_pergunta: p.id,
-          tipo: p.tipo,
+          id_pergunta: [p.id],
+          tipo: [p.tipo],
           insumo: [],
           quantidade: [],
           undMedida: [],
@@ -71,9 +76,9 @@ export class NovotesteComponent implements OnInit {
       }
       if (p.tipo === 'numero') {
         tipo = {
-          id_pergunta: p.id,
-          tipo: p.tipo,
-          resposta: p.resposta,
+          id_pergunta: [p.id],
+          tipo: [p.tipo],
+          resposta: [p.resposta, Validators.min(10)],
         };
       }
       let resposta = this.fb.group(tipo);

@@ -11,7 +11,7 @@
       {{ item.value["tipo"] }}
       <ng-container *ngIf="item.value['tipo'] === 'numero'">
         {{ i }}
-        <input type="text" formControlName="resposta" />
+        <input type="number" formControlName="resposta" />
       </ng-container>
       <ng-container *ngIf="item.value['tipo'] === 'insumo'">
         {{ i }}
@@ -21,4 +21,5 @@
       </ng-container>
     </div>
   </div>
+  <button class="button" type="submit" (click)="onSubmit()">Purchase</button>
 </form>
