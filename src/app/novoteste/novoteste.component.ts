@@ -39,8 +39,9 @@ export class NovotesteComponent implements OnInit {
       id: 2,
       label: 'Lorem 2',
       tipo: 'numero',
-      resposta: '',
+      resposta: null,
       validacao: 'x>=50 && x<=200',
+      msgValidacao: 'Valor deve estar entre 50 e 200 Lt ou Kg por ha',
     },
     // {
     //   id: 3,
@@ -78,7 +79,10 @@ export class NovotesteComponent implements OnInit {
         tipo = {
           id_pergunta: [p.id],
           tipo: [p.tipo],
-          resposta: [p.resposta, Validators.min(10)],
+          resposta: [
+            p.resposta,
+            [Validators.required, Validators.min(50), Validators.max(200)],
+          ],
         };
       }
       let resposta = this.fb.group(tipo);

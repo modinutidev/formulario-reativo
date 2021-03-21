@@ -12,6 +12,7 @@
       <ng-container *ngIf="item.value['tipo'] === 'numero'">
         {{ i }}
         <input type="number" formControlName="resposta" />
+        <span>{{ item.valid }}</span>
       </ng-container>
       <ng-container *ngIf="item.value['tipo'] === 'insumo'">
         {{ i }}
